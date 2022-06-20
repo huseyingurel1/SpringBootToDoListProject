@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TODOLIST</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#" >TO DO LIST</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/notes}">My List</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class = "container">
+    <div class = "row">
+        <h1>List Notes </h1>
+    </div>
+    <div class = "row">
+        <div class ="col-lg-3">
+            <a th:href = "@{/notes/new}" class = " btn btn-primary btn-sm mb-3"  > <i class="fa-solid fa-plus"></i>     Add Note </a>
+        </div>
+
+    </div>
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr>
+            <th> Title</th>
+            <th> Message </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each = "note: ${notes}">
+            <td th:text = "${note.titleSection}">  </td>
+            <td th:text = "${note.messageSection}">  </td>
+
+            <td>
+                <a th:href="@{/notes/edit/{id}(id=${note.id})}" class = "btn btn-info"><i class="fa fa-refresh" aria-hidden="true"></i>  Update</a>
+
+                <a th:href="@{/notes/{id}(id=${note.id})}" class = "btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>  Delete</a>
+
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+
+</body>
+</html>

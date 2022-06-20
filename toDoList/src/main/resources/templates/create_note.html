@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Student </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Create New Note</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/notes}">To Do List</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<div class = "container">
+    <div class = row>
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class =" text-center"> Create New Note</h1>
+            <div class="card-body">
+                <form th:action="@{/notes}" th:object = "${note}" method="POST">
+                    <div class="form-group">
+                        <label> Title </label>
+                        <input type="text"  name="titleSection"  th:field="*{titleSection}" class ="form-control" placeholder ="Enter a Title" />
+                    </div>
+
+                    <div class="form-group">
+                        <label> Message </label>
+                        <input type="text"  name="messageSection"  th:field= "*{messageSection}" class ="form-control" placeholder ="Enter a Message" />
+                    </div>
+
+
+                    <div class="box-footer" >
+                        <button type="submit" class = "btn btn-primary"> Submit </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
